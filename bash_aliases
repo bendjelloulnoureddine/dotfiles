@@ -39,12 +39,12 @@ alias gis='git status'
 alias gid='git diff'
 alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
 alias ddo='docker-compose down'
-alias dp='docker-compose up | ccze -A'
-alias dcl='docker-compose logs -f --tail=10 | ccze -A'
-alias dcu='docker-compose up | ccze -A'
-alias dcd='docker-compose down'
-alias dcb='docker-compose build'
-alias dcp='docker-compose pull'
+alias dp='docker compose up | ccze -A'
+alias dcl='docker compose logs -f --tail=10 | ccze -A'
+alias dcu='docker compose up | ccze -A'
+alias dcd='docker compose down'
+alias dcb='docker compose build'
+alias dcp='docker compose pull'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
@@ -120,7 +120,7 @@ function create_variables() {
 }
 
 function ff() {
-    docker-compose run -u root --rm --no-deps --entrypoint "bash -c \"chown -R odoo: /var/lib/odoo/ && chown `id -u`:`id -g` -R /mnt/extra-addons\"" odoo
+    docker compose run -u root --rm --no-deps --entrypoint "bash -c \"chown -R odoo: /var/lib/odoo/ && chown `id -u`:`id -g` -R /mnt/extra-addons\"" odoo
     [ $? -eq 0 ] || echo "Operation failed"
 }
 
@@ -192,7 +192,7 @@ function scaffold(){
     if [ $# -eq 0 ] ; then
         echo "Give a name to your project"
     else
-        docker-compose run -u root --rm --no-deps --entrypoint "bash -c \"odoo scaffold ${1} /mnt/extra-addons  && chown `id -u`:`id -g` -R /mnt/extra-addons/${1}\"" odoo
+        docker compose run -u root --rm --no-deps --entrypoint "bash -c \"odoo scaffold ${1} /mnt/extra-addons  && chown `id -u`:`id -g` -R /mnt/extra-addons/${1}\"" odoo
     fi
     cd extra-addons/${1}
 }
