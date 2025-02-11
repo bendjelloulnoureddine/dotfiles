@@ -3,8 +3,6 @@
 current_dir=$PWD;
 homeconfig="
 bash_aliases
-emacs-custom.el
-emacs.el
 fire_tmux.bash
 inputrc
 tmux.conf
@@ -32,12 +30,12 @@ if [ -h $HOME/.profile ];then
 fi
 
 
-END_SEGMENT=$(sed -n '/^#END IGPro dotfiles/p' ~/.profile)
-[ ! -z "$END_SEGMENT" ] && sed -i '/^#BEGIN IGPro dotfiles/,/^#END IGPro dotfiles/d' ~/.profile
+END_SEGMENT=$(sed -n '/^#END NB dotfiles/p' ~/.profile)
+[ ! -z "$END_SEGMENT" ] && sed -i '/^#BEGIN NB dotfiles/,/^#END NB dotfiles/d' ~/.profile
 
 
 cat <<EOF >> ~/.profile
-#BEGIN IGPro dotfiles
+#BEGIN NB dotfiles
 # Do not add anything in between BEGIN and END
 
 # Force colored prompt
@@ -57,7 +55,7 @@ if [ -f $current_dir/fire_tmux.bash ]; then
     source $current_dir/fire_tmux.bash
 fi
 
-#END IGPro dotfiles
+#END NB dotfiles
 EOF
 
 # Charger les aliases

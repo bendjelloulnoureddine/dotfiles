@@ -23,7 +23,7 @@ alias gig='git merge'
 alias gil='git log --oneline --graph --all --decorate'
 currentver="$(git --version | awk -F' ' '{print $3}')"
 requiredver="2.3.0"
-if [ "$(printf "$requiredver\n$currentver" | sort -V | head -n1)" == "$currentver" ] && [ "$currentver" != "$requiredver" ];
+if [ "$(printf "$requiredver\n$currentver" | sort -V | head -n1)" = "$currentver" ] && [ "$currentver" != "$requiredver" ];
 then
     #echo "git less than 2.3.0 ($currentver)"
     alias gil="git log --graph --all --date=iso --pretty='format:%C(yellow)%h %C(green)%ad %C(bold blue)%an %C(auto)%d%C(reset) %s'"
